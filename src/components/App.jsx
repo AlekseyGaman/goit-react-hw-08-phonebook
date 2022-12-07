@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { nanoid } from 'nanoid';
+
 import { GlobalStyle } from 'components/GlobalStyle';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
@@ -22,16 +24,18 @@ class App extends Component {
     }));
   };
 
-  formSubmitHandler = ({ id, name, number }) => {
-    const contact = {
-      id: nanoid(),
-      name,
-      number,
-    };
+  formSubmitHandler = ({ name, number }) => {
+    const { contacts } = this.state;
+    const newContact = { id: nanoid(), name, number };
+    const checkUser = contacts.find(
+      contact => contact.name === newContact.name
+    );
 
-    this.setState(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
+    checkUser
+      ? alert(`${name} is already in the contacts`)
+      : this.setState(prevState => ({
+          contacts: [newContact, ...prevState.contacts],
+        }));
   };
 
   changeFilter = event => {
@@ -54,16 +58,15 @@ class App extends Component {
     return (
       <>
         <GlobalStyle />
-        <div>
-          <h1>Phonebook</h1>
+        <div className="formWrapper">
+          <h1 className="title">Phonebook</h1>
           <ContactForm onSubmit={this.formSubmitHandler} />
-          <h2>Contacts</h2>
+          <h2 className="title">Contacts</h2>
           <Filter value={filter} onChange={this.changeFilter} />
           <ContactList
             contacts={filterContacts}
             onDeleteContact={this.deleteContact}
           />
-          {/* <Filter ... /> */}
         </div>
       </>
     );
@@ -71,3 +74,17 @@ class App extends Component {
 }
 
 export default App;
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  filter: PropTypes.string,
+  formSubmitHandler: PropTypes.func,
+  deleteContact: PropTypes.func,
+  changeFilter: PropTypes.func,
+};

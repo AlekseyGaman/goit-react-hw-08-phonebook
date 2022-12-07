@@ -16,13 +16,17 @@ body {
       monospace;
   }
   ul {
-    list-style: none;
     padding: 0;
     margin: 0;
   }
+
+  ul li::marker {
+}
+
   * {
   box-sizing: border-box;
 }
+
 h1,
 h2,
 h3,
@@ -33,12 +37,32 @@ p {
   margin: 0;
 }
 
-.form {
+.formWrapper {
+  padding: 40px 0px 0px 40px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid black;
+align-items: center; 
+ justify-content: center;
+ gap: 20px;
 }
 
+.title {
+  color: #0a1b25;
+  text-shadow: 2px 2px 3px rgba(150, 150, 150, 1);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #2f5870 inset !important;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
 `;

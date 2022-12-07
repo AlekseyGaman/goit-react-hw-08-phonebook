@@ -1,20 +1,35 @@
 // import PropTypes from 'prop-types';
 import React from 'react';
+import { PropTypes } from 'prop-types';
+import { ContactListUl, ContactLi } from './ContactList.styled';
 
 function ContactList({ contacts, onDeleteContact }) {
   return (
-    <ul>
+    <ContactListUl>
       {contacts.map(({ id, name, number }) => {
         return (
-          <li key={id}>
-            <p>{name}</p>
+          <ContactLi key={id}>
+            <p>{name}:</p>
             <span>{number}</span>
-            <button type="button" onClick={() => onDeleteContact(id)}></button>
-          </li>
+            <button type="button" onClick={() => onDeleteContact(id)}>
+              Remove
+            </button>
+          </ContactLi>
         );
       })}
-    </ul>
+    </ContactListUl>
   );
 }
 
 export default ContactList;
+
+ContactList.prototype = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  onDeleteContact: PropTypes.func,
+};
