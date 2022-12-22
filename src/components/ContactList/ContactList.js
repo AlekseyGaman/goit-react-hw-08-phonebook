@@ -26,10 +26,10 @@ export default ContactList;
 ContactList.prototype = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
-  onDeleteContact: PropTypes.func,
+  onDeleteContact: PropTypes.func.isRequired,
 };

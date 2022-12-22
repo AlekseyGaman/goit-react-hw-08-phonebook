@@ -1,44 +1,40 @@
-import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
-
 import { GlobalStyle } from 'components/GlobalStyle';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
 
-class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
+const StorageKey = 'contacts';
 
-  deleteContact = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
-  };
+function App() {
+  const [contacts, setContacts] = useState(() => {
+    return JSON.parse(localStorage.getItem(StorageKey)) ?? [];
+  });
+  const [filter, setFilter] = useState('');
 
-  formSubmitHandler = ({ name, number }) => {
-    const { contacts } = this.state;
+  useEffect(() => {
+    localStorage.setItem(StorageKey, JSON.stringify(contacts));
+  }, [contacts]);
+
+  const formSubmitHandler = ({ name, number }) => {
     const newContact = { id: nanoid(), name, number };
-    const checkUser = contacts.find(
-      contact => contact.name === newContact.name
-    );
-
-    checkUser
+    contacts.find(contact => contact.name === newContact.name)
       ? alert(`${name} is already in the contacts`)
-      : this.setState(prevState => ({
-          contacts: [newContact, ...prevState.contacts],
-        }));
+      : setContacts(prevContacts => [newContact, ...prevContacts]);
   };
 
-  changeFilter = event => {
-    this.setState({ filter: event.currentTarget.value });
+  const deleteContact = contactId => {
+    setContacts(contacts =>
+      contacts.filter(contact => contact.id !== contactId)
+    );
   };
 
-  getFilterContsacts = () => {
-    const { contacts, filter } = this.state;
+  const changeFilter = event => {
+    setFilter(event.currentTarget.value);
+  };
+
+  const getFilterContsacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
@@ -46,54 +42,26 @@ class App extends Component {
     );
   };
 
-  componentDidMount() {
-    const localContacts = localStorage.getItem('contacts');
-    const parseContacts = JSON.parse(localContacts);
-    if (parseContacts) {
-      this.setState({ contacts: parseContacts });
-    }
-  }
+  return (
+    <>
+      <GlobalStyle />
+      <div className="formWrapper">
+        <h1 className="title">Phonebook</h1>
+        <ContactForm onSubmit={formSubmitHandler} />
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
-    }
-  }
-
-  render() {
-    const { filter } = this.state;
-    const filterContacts = this.getFilterContsacts();
-
-    return (
-      <>
-        <GlobalStyle />
-        <div className="formWrapper">
-          <h1 className="title">Phonebook</h1>
-          <ContactForm onSubmit={this.formSubmitHandler} />
-          <h2 className="title">Contacts</h2>
-          <Filter value={filter} onChange={this.changeFilter} />
+        <h2 className="title">Contacts</h2>
+        <Filter value={filter} onChange={changeFilter} />
+        {contacts.length > 0 ? (
           <ContactList
-            contacts={filterContacts}
-            onDeleteContact={this.deleteContact}
+            contacts={getFilterContsacts()}
+            onDeleteContact={deleteContact}
           />
-        </div>
-      </>
-    );
-  }
+        ) : (
+          <p>Contact list is empty.</p>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default App;
-
-App.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    })
-  ),
-  filter: PropTypes.string,
-  formSubmitHandler: PropTypes.func,
-  deleteContact: PropTypes.func,
-  changeFilter: PropTypes.func,
-};
