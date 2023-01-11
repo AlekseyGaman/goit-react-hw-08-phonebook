@@ -45,7 +45,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <div className="formWrapper">
+      <div className="formWrapper Wrapper">
         <h1 className="title">Phonebook</h1>
         <ContactForm onSubmit={formSubmitHandler} />
 
