@@ -18,7 +18,7 @@ export const InputBox = styled.div`
   position: relative;
 `;
 
-export const ContactInput = styled.input`
+export const ContactsInput = styled.input`
   width: 250px;
   padding: 10px;
   border: 1px solid #b3bec8;
@@ -47,7 +47,7 @@ export const ContactInput = styled.input`
   }
 `;
 
-export const ContactSpan = styled.span`
+export const ContactsSpan = styled.span`
   position: absolute;
   left: 0;
   padding: 10px;

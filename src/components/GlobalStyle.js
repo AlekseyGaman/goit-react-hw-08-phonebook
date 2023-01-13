@@ -37,7 +37,7 @@ p {
   margin: 0;
 }
 
-.formWrapper {
+.container {
   padding: 40px 0px 0px 40px;
   display: flex;
   flex-direction: column;

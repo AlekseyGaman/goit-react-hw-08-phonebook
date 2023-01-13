@@ -1,16 +1,22 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { PropTypes } from 'prop-types';
+import { nanoid } from '@reduxjs/toolkit';
+import { getContacts } from '../../redux/store';
+import { addContact } from '../../redux/contactsSlice';
 import {
-  ContactSpan,
+  ContactsSpan,
   Form,
   InputBox,
-  ContactInput,
+  ContactsInput,
   SubmitButton,
-} from './ContactForm.styled';
+} from './ContactsForm.styled';
 
-const ContactForm = ({ onSubmit }) => {
+const ContactsForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const NameChange = event => {
     setName(event.currentTarget.value);
@@ -22,9 +28,10 @@ const ContactForm = ({ onSubmit }) => {
 
   const handelSubmit = event => {
     event.preventDefault();
-
-    onSubmit({ name, number });
-
+    const newContact = { id: nanoid(), name, number };
+    contacts.find(contact => contact.name === newContact.name)
+      ? alert(`${name} is already in the contacts`)
+      : dispatch(addContact(newContact));
     reset();
   };
 
@@ -36,7 +43,7 @@ const ContactForm = ({ onSubmit }) => {
   return (
     <Form className="form" onSubmit={handelSubmit}>
       <InputBox>
-        <ContactInput
+        <ContactsInput
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -45,10 +52,10 @@ const ContactForm = ({ onSubmit }) => {
           value={name}
           onChange={NameChange}
         />
-        <ContactSpan>Name</ContactSpan>
+        <ContactsSpan>Name</ContactsSpan>
       </InputBox>
       <InputBox>
-        <ContactInput
+        <ContactsInput
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -57,17 +64,11 @@ const ContactForm = ({ onSubmit }) => {
           value={number}
           onChange={NumberChange}
         />
-        <ContactSpan>Number</ContactSpan>
+        <ContactsSpan>Number</ContactsSpan>
       </InputBox>
       <SubmitButton type="submit">Add contact</SubmitButton>
     </Form>
   );
 };
 
-export default ContactForm;
-
-ContactForm.propType = {
-  name: PropTypes.string,
-  number: PropTypes.string,
-  handelSubmit: PropTypes.func,
-};
+export default ContactsForm;
