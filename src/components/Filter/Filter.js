@@ -1,13 +1,11 @@
 // import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { FilterLabel, FilterInput, FilterWrapper } from './Filter.syled';
-import { getFilterContsacts, getFilter } from '../../redux/contactsSlice';
+import { getFilterContsacts } from '../../redux/contacts/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
-  const contactsFilter = useSelector(getFilter);
-  const changeFilter = event =>
-    dispatch(getFilterContsacts(event.currentTarget.value));
+  const contactsFilter = useSelector(state => state.filter);
 
   return (
     <FilterWrapper>
@@ -16,7 +14,9 @@ const Filter = () => {
         <FilterInput
           type="search"
           value={contactsFilter}
-          onChange={changeFilter}
+          onChange={event =>
+            dispatch(getFilterContsacts(event.currentTarget.value))
+          }
         ></FilterInput>
       </FilterLabel>
     </FilterWrapper>
