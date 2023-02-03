@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const FilterWrapper = styled.div``;
+export const FilterWrapper = styled.div`
+  margin-top: 30px;
+`;
 
 export const FilterLabel = styled.label`
   display: flex;

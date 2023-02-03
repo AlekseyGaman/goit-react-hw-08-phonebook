@@ -2,14 +2,15 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
+  margin-top: 30px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 30px;
   padding: 10px;
   width: 500px;
-  height: 300px;
-  background-color: #2f5870;
+  height: 250px;
+  background-color: #fcfcfc;
   border-radius: 15px;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.61);
 `;
@@ -25,24 +26,24 @@ export const ContactsInput = styled.input`
   border-radius: 5px;
   background: transparent;
   outline: none;
-  color: #ffffff;
+  color: #003161;
   font-size: 1em;
 
   &:valid,
   :focus,
   :hover {
-    border: 1px solid #0ff6c1;
+    border: 1px solid #003161;
   }
 
   &:valid ~ span,
   :focus ~ span {
-    color: #0ff6c1;
+    color: #003161;
     transform: translateX(10px) translateY(-7px);
     font-size: 0.75em;
     padding: 0 10px;
-    background-color: #2f5870;
-    border-left: 1px solid #0ff6c1;
-    border-right: 1px solid #0ff6c1;
+    background-color: #fcfcfc;
+    border-left: 1px solid #003161;
+    border-right: 1px solid #003161;
     letter-spacing: 0.1em;
   }
 `;
@@ -53,7 +54,7 @@ export const ContactsSpan = styled.span`
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
-  color: #b3bec8;
+  color: #003161;
   text-transform: uppercase;
   transition: 0.5s;
 `;
@@ -62,16 +63,17 @@ export const SubmitButton = styled.button`
   width: 150px;
   padding: 7px;
   font-size: 20px;
-  color: #ffffff;
+  color: #003161;
   cursor: pointer;
   background-color: transparent;
-  border: 1px solid #b3bec8;
+  border: 1px solid #003161;
   border-radius: 5px;
 
-  &:focus,
-  :hover {
-    color: #0ff6c1;
-    /* background-color: #4d6b7c; */
-    border: 1px solid #0ff6c1;
+  &:hover,
+  &:focus {
+    color: #ffffff;
+    border: 1px solid #2f5870;
+    border-radius: 5px;
+    background-color: #2f5870;
   }
 `;

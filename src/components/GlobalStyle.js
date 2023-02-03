@@ -9,6 +9,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
   }
   
   code {
@@ -47,28 +48,15 @@ p {
   flex-direction: column;
 align-items: center; 
  justify-content: center;
+ font-family: "Roboto";
 }
 
-.header{
-  display: flex;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin:0;
-  width: 100vw;
-  height: 70px;
-  justify-content: space-around;
-}
-
-.header__inner {
-  display: flex;
-  gap: 50px;
-  align-items: center;
-}
 
 .title {
   color: #0a1b25;
   text-shadow: 2px 2px 3px rgba(150, 150, 150, 1);
 }
+
 /* 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
