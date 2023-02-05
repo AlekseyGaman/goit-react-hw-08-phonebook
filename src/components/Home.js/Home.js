@@ -9,7 +9,7 @@ import {
 const Home = () => {
   return (
     <>
-      <HomeContainer>
+      <HomeContainer data-aos="fade-right">
         <HomeTitle>Welcome to your Phonebook</HomeTitle>
         <HomeLogIn>
           Already have an account? <HomeLink to="/login">Sign in</HomeLink>

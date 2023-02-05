@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { fetchContacts } from '../redux/contacts/operations';
 import ContactsForm from '../components/ContactsForm/ContactsForm';
 import Filter from '../components/Filter/Filter';
+import { ContactsContainer } from './Pages.styled';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <ContactsContainer>
       <ContactsForm />
       <Filter />
       {items.length > 0 ? (
@@ -24,7 +25,7 @@ const ContactsPage = () => {
       ) : (
         <p className="listEmpty">Contact list is empty.</p>
       )}
-    </>
+    </ContactsContainer>
   );
 };
 

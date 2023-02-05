@@ -1,5 +1,7 @@
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import styled, { keyframes } from 'styled-components';
+import { fadeInUp } from 'react-animations';
+const fadeAnimation = keyframes`${fadeInUp}`;
 
 export const HomeContainer = styled.div`
   display: flex;
@@ -7,6 +9,8 @@ export const HomeContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+
+  animation: 1.5s ${fadeAnimation};
 `;
 
 export const HomeTitle = styled.div`
