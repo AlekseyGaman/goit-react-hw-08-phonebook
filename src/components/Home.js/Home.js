@@ -1,18 +1,22 @@
-import { Link } from 'react-router-dom';
-import { HomeContainer, HomeImg } from './Home.styled';
+import {
+  HomeContainer,
+  HomeTitle,
+  HomeLogIn,
+  HomeReg,
+  HomeLink,
+} from './Home.styled';
 
 const Home = () => {
   return (
     <>
       <HomeContainer>
-        <h2>Welcome to your Phonebook</h2>
-        <HomeImg></HomeImg>
-        <p>
-          Already have an account? <Link to="/login">Sign in</Link>
-        </p>
-        <p item>
-          Don't have an account? <Link to="/register">Register</Link>
-        </p>
+        <HomeTitle>Welcome to your Phonebook</HomeTitle>
+        <HomeLogIn>
+          Already have an account? <HomeLink to="/login">Sign in</HomeLink>
+        </HomeLogIn>
+        <HomeReg>
+          Don't have an account? <HomeLink to="/register">Register</HomeLink>
+        </HomeReg>
       </HomeContainer>
     </>
   );

@@ -5,35 +5,24 @@ export const Header = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
-  border-bottom: 1px solid #ececec;
+  -webkit-box-shadow: 0px 2px 12px -2px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 2px 12px -2px rgba(0, 0, 0, 0.17);
 `;
 
 export const HeaderContainer = styled.div`
   display: flex;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   width: 1200px;
   height: 70px;
   align-items: center;
   justify-content: center;
 `;
 
-export const HeaderLogo = styled.h1`
-  margin-right: 120px;
-
-  // CSS
-  color: #e91e63;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    #e91e63 14%,
-    #bcc785 51%,
-    #086fa6 100%
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  /* text-fill-color: transparent; */
-  -webkit-text-fill-color: transparent;
-`;
+// export const HeaderLogo = styled.h1`
+//   margin-right: 120px;
+//   color: #212121;
+// `;
 
 export const HeaderNav = styled.div`
   display: flex;
@@ -54,28 +43,28 @@ export const HeaderUser = styled.div`
 `;
 
 export const HeaderUserName = styled.p`
-  font-size: 22px;
+  font-size: 21px;
   font-style: oblique;
-  font-weight: 600;
+  /* font-weight: 600; */
 
-  color: #1c495b;
+  color: #212121;
 `;
 
 export const HeaderUserLogout = styled.button`
-  padding: 4px 12px;
+  padding: 5px 14px;
   display: flex;
   gap: 10px;
   align-items: center;
   font-size: 19px;
-  font-weight: 600;
+  /* font-weight: 600; */
   border: none;
   background-color: transparent;
 
   &:hover,
   &:focus {
     color: #ffffff;
-    border-radius: 20px;
-    background-color: #f36871;
+    border-radius: 10px;
+    background-color: #7e5fff;
   }
 `;
 
@@ -85,18 +74,18 @@ export const HeaderLink = styled(NavLink)`
   gap: 10px;
   padding: 0px 4px 0px 4px;
   font-size: 20px;
-  font-weight: 600;
-  color: #1c495b;
+  /* font-weight: 600; */
+  color: #212121;
   text-decoration: none;
   &:hover,
   &:focus {
-    color: #f36f68;
-    border-left: 2px solid #f36871;
-    border-right: 2px solid #f36871;
+    color: #7e5fff;
+    border-left: 2px solid #7e5fff;
+    border-right: 2px solid #7e5fff;
     /* background-color: #ffd265; */
   }
 
   &.active {
-    color: #f36f68;
+    color: #7e5fff;
   }
 `;

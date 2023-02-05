@@ -22,7 +22,7 @@ const ContactsPage = () => {
         // contacts={getFilterContsacts()}
         />
       ) : (
-        <p>Contact list is empty.</p>
+        <p className="listEmpty">Contact list is empty.</p>
       )}
     </>
   );

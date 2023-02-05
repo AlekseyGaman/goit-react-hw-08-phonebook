@@ -3,14 +3,21 @@ import styled from 'styled-components';
 export const ContactListUl = styled.ul`
   display: flex;
   flex-direction: column;
+  padding: 0;
   gap: 20px;
   margin-top: 30px;
+  margin-bottom: 15px;
+  width: auto;
 `;
 
 export const ContactLi = styled.li`
   display: flex;
-  width: 380px;
+  min-width: 480px;
   gap: 20px;
+
+  :nth-child(2n) {
+    background-color: #f3f3f3;
+  }
 
   & p {
     font-size: 20px;
@@ -32,10 +39,10 @@ export const ContactLi = styled.li`
     border: none;
     border-radius: 10px;
     margin-left: auto;
-    transition: 0.5s;
+    transition: 0.3s;
     &:hover,
     :focus {
-      background-color: #2f5870;
+      background-color: #7e5fff;
       color: #ffffff;
     }
   }

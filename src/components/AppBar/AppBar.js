@@ -5,7 +5,7 @@ import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import {
   Header,
   HeaderContainer,
-  HeaderLogo,
+  // HeaderLogo,
   HeaderNav,
   HeaderLink,
   HeaderLogReg,
@@ -21,7 +21,7 @@ const AppBar = () => {
   return (
     <Header>
       <HeaderContainer>
-        <HeaderLogo>Phonebook</HeaderLogo>
+        {/* <HeaderLogo>Pb</HeaderLogo> */}
         <HeaderNav>
           <HeaderLink to="/">Home</HeaderLink>
           {isLoggedIn && <HeaderLink to="/contacts">Contacts</HeaderLink>}

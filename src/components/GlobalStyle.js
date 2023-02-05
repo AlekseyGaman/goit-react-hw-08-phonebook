@@ -9,7 +9,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+    height: 100%;
   }
   
   code {
@@ -38,23 +38,29 @@ p {
   margin: 0;
 }
 
-#root {
+/* #root {
   width: 100vw;
-  height: 100vh;
-}
+} */
 
 .container {
   display: flex;
   flex-direction: column;
-align-items: center; 
- justify-content: center;
- font-family: "Roboto";
+  align-items: center;
+  justify-content: flex-start;
+  margin: auto;
+ font-family: 'Arial';
+ max-width: 1200px;
+ min-height: calc(100vh - 160px);
 }
 
 
 .title {
   color: #0a1b25;
   text-shadow: 2px 2px 3px rgba(150, 150, 150, 1);
+}
+
+.listEmpty{
+margin-top: 15px;
 }
 
 /* 

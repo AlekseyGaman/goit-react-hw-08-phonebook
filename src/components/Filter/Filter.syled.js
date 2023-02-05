@@ -22,6 +22,6 @@ export const FilterInput = styled.input`
 
   &:hover,
   &:focus {
-    outline: 1px solid #2f5870;
+    outline: 1px solid #7e5fff;
   }
 `;
